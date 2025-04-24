@@ -1,0 +1,24 @@
+{
+  "name": "umkm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "4"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^9.7.0",
+    "2captcha": "^3.0.5-2",
+    "chalk": "^5.4.1",
+    "https-proxy-agent": "^7.0.6",
+    "node-fetch": "^3.3.2",
+    "readline-sync": "^1.4.10"
+  }
+}
