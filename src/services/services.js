@@ -73,10 +73,6 @@ export async function Curl(
         data = await response.text();
       }
 
-      log(
-        `🔄 Attempt ${attempt}/${maxRetries} - Fetched ${url} successfully.`,
-        "warning"
-      );
       return { data, cookie, redirect, status };
     } catch (error) {
       log(`⚠️ Fetch failed (Attempt ${attempt}): ${error.message}`, "warning");
