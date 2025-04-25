@@ -151,7 +151,7 @@ $('select[name="province"] option').each((i, el) => {
         fs.readFileSync("captcha.jpg", "base64")
       );
     } while (data.data.length !== 5);
-    log(`Capctha Fix ${data.toLocaleUpperCase()}`, "success");
+    log(`Capctha Fix ${data.data.toLocaleUpperCase()}`, "success");
     const FetchRegist = await Curl(
       "https://linkumkm.id/umkmscore/register",
       new URLSearchParams({
@@ -164,7 +164,7 @@ $('select[name="province"] option').each((i, el) => {
         id_number: Nik,
         password: Password,
         password_retype: Password,
-        kode_captcha: data.toLocaleUpperCase(),
+        kode_captcha: data.data.toLocaleUpperCase(),
         honeypot: "",
       }),
       {
