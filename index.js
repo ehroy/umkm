@@ -246,17 +246,20 @@ $('select[name="province"] option').each((i, el) => {
           { question: "28", answer: "95" },
           { question: "29", answer: "104" },
         ];
-        for (const { question, answer } of questionsAndAnswers) {
-          const response = await Curl(
-            "https://linkumkm.id/scoring_revamp/submit",
-            new URLSearchParams({ question, answer }),
-            { cookie: cookie }
-          );
-          const result = JSON.parse(response.data).data;
-          log(
-            `Q ${question} : Question Total : ${result.total_question} Terjawab ${result.user_answer} Precentage ${result.persentase}%`,
-            "warning"
-          );
+        for (let index = 0; index <= 1; index++) {
+          for (const { question, answer } of questionsAndAnswers) {
+            const response = await Curl(
+              "https://linkumkm.id/scoring_revamp/submit",
+              new URLSearchParams({ question, answer }),
+              { cookie: cookie }
+            );
+            const result = JSON.parse(response.data).data;
+            log(
+              `Q ${question} : Question Total : ${result.total_question} Terjawab ${result.user_answer} Precentage ${result.persentase}%`,
+              "warning"
+            );
+          }
+          
         }
         const FetchCalculating = await Curl(
           "https://linkumkm.id/scoring_revamp/calc",
