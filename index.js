@@ -267,6 +267,31 @@ $('select[name="province"] option').each((i, el) => {
           { cookie: cookie }
         );
         console.log(FetchCalculating);
+        const FetchAcceptCuy = await Curl(
+          "https://linkumkm.id/access/kebijakanprivasistatus/",
+          null,
+          { cookie: cookie }
+        );
+        for (let index = 0; index <= 1; index++) {
+          for (const { question, answer } of questionsAndAnswers) {
+            const response = await Curl(
+              "https://linkumkm.id/scoring_revamp/submit",
+              new URLSearchParams({ question, answer }),
+              { cookie: cookie }
+            );
+            const result = JSON.parse(response.data).data;
+            log(
+              `Q ${question} : Question Total : ${result.total_question} Terjawab ${result.user_answer} Precentage ${result.persentase}%`,
+              "warning"
+            );
+          }
+          
+        }
+          const FetchAcceptCuySu = await Curl(
+          "https://linkumkm.id/access/kebijakanprivasistatus/",
+          null,
+          { cookie: cookie }
+        );
       } else {
         log(`Submit Data Failed....`, "error");
       }
