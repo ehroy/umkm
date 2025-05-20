@@ -110,6 +110,7 @@ $('select[name="province"] option').each((i, el) => {
     const Number = DataAccount[1];
     const Nik = DataAccount[2];
     const Password = DataAccount[3];
+    const Email = DataAccount[4];
 
     const FetchCookie = await Curl("https://linkumkm.id/", null);
     const cookie = FetchCookie.cookie.replaceAll("Path=/", "");
@@ -266,6 +267,28 @@ $('select[name="province"] option').each((i, el) => {
           { cookie: cookie }
         );
         console.log(FetchCalculating);
+          const AddEmail = await Curl(
+          "https://linkumkm.id/profil/submit_profil",
+          new URLSearchParams({
+          'csrf_linkumkm': csrf,
+          'user_inj': '',
+          'fullname': FullName,
+          'id_type': '1',
+          'id_number': Nik,
+          'email': Email,
+          'phone_number': Number,
+          'born_date':BirthDay,
+          'gender': '1',
+          'education': '4',
+          'website': '',
+          'facebook': '',
+          'line': '',
+          'instagram': '',
+          'honeypot': ''
+        }),
+          { cookie: cookie }
+        );
+        console.log(AddEmail)
       } else {
         log(`Submit Data Failed....`, "error");
       }

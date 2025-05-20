@@ -110,6 +110,7 @@ $('select[name="province"] option').each((i, el) => {
     const Number = DataAccount[1];
     const Nik = DataAccount[2];
     const Password = DataAccount[3];
+    const Email = DataAccount[4];
 
     const FetchCookie = await Curl("https://linkumkm.id/", null);
     const cookie = FetchCookie.cookie.replaceAll("Path=/", "");
@@ -246,7 +247,7 @@ $('select[name="province"] option').each((i, el) => {
           { question: "28", answer: "95" },
           { question: "29", answer: "104" },
         ];
-        for (let index = 0; index <= 1; index++) {
+        for (let index = 0; index < 1; index++) {
           for (const { question, answer } of questionsAndAnswers) {
             const response = await Curl(
               "https://linkumkm.id/scoring_revamp/submit",
@@ -272,7 +273,7 @@ $('select[name="province"] option').each((i, el) => {
           null,
           { cookie: cookie }
         );
-        for (let index = 0; index <= 1; index++) {
+        for (let index = 0; index < 1; index++) {
           for (const { question, answer } of questionsAndAnswers) {
             const response = await Curl(
               "https://linkumkm.id/scoring_revamp/submit",
@@ -292,6 +293,30 @@ $('select[name="province"] option').each((i, el) => {
           null,
           { cookie: cookie }
         );
+
+
+         const AddEmail = await Curl(
+          "https://linkumkm.id/profil/submit_profil",
+          new URLSearchParams({
+          'csrf_linkumkm': csrf,
+          'user_inj': '',
+          'fullname': FullName,
+          'id_type': '1',
+          'id_number': Nik,
+          'email': Email,
+          'phone_number': Number,
+          'born_date':BirthDay,
+          'gender': '1',
+          'education': '4',
+          'website': '',
+          'facebook': '',
+          'line': '',
+          'instagram': '',
+          'honeypot': ''
+        }),
+          { cookie: cookie }
+        );
+        console.log(AddEmail)
       } else {
         log(`Submit Data Failed....`, "error");
       }
